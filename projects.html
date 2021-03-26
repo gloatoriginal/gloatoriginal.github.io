@@ -1,0 +1,48 @@
+<html>
+    <head><title>Devin's Projects List</title><link rel="stylesheet" href="main.css"/></head>
+    <body>
+        <h1>Below you can see a list of projects and their descriptions of how I went through with achieving them</h1>
+        <h2>
+            For readers that are not prepared or well versed in mid level computer jargin I will put a higher level description as well
+            look for when I say *High Level Description* vs *Lower Level Description*
+        </h2>
+        <br><br>
+        <h3>Active Directory Domain Controller Windows Server 2016 and 2019</h3>
+        <i><p>*High Level Description*</p></i>
+        <p>
+            I created a centralized server to use as a database for new users that are added into the company, I than implemented 
+            a configuration to automatically install windows across multiple devices on the network that the server sits on. As well I created
+            roaming profiles and network based configurations for new and past users to have centralized data and settings. With these tools 
+            some companys can see exponential rates of effeciency due to automated processes handling otherwise human manual tasks.
+        </p>
+        <i><p>*Low Level Description*</p></i>
+        <p>I promoted Windows server 2016 & 2019 as a domain controller and DHCP server, than created users and implemented specifc group
+            policies to help delegate control across the domain. With this set up I created a VM using Hyper-V in Windows 10 Pro, than used
+            my windows server Local IP as the DNS server for my new client. I was able to login to my domain with a created user, I had a 
+            restricted user and an admin user that I was able to freely move from group to group. Now that I had my users in their correct OUs
+            I moved to Roaming profiles for each user, each user than had their own alotted directory that sat on the server, but still had 
+            the luxury of appearing as a local filesystem with that users name. After this I was able to create RAID array's using virtual
+            disks that I gave to my VM using Hyper-V, for extra practice I continuelly ran Checkpoints during each step of the installation
+            and saved those checkpoints to a second physical hard disk that was separate to the main VM incase of any failures. With 3 virtual
+            disks alotted to my server I was able to create RAID 5 with 3 disks to incorporate striping with parity. After this I also created
+            a software RAID 1 mirrored. With my domain controller so in depth and advanced, I didn't want to lose anything configuration wise,
+            I implemented DFS to have replications scheduled periodically on my server. Amazing stuff, the next thing that server can do was
+            PXE Boot! I installed PXE boot and made sure clients were receiving my DHCP range, I than downloaded the windows 10 ISO and 
+            mounted the iso to see the files like a folder, I could than grab the boot.wim file, this is going to be the file that boots
+            the motherboard and loads windows into the running memory, over the network. I was able to configure this and point my pxe server
+            to my boot.wim location, I than booted my server in UEFI and was off to the races. Once my installation finished I was presented
+            with a brand new Windows 10, through this I could help companies deploy many computers at once and cut down on installation time
+            by sometimes exponential effeciency.
+        </p>
+        <br>
+        <h3>Ubuntu Server PXE Boot</h3>
+        <p><i>*Low Level Description*</i></p>
+        <p>
+            I installed PXElinux, TFTP server, syslinux, apache2, and isc-dhcp on Ubuntu 20.04 Kernel 5.8. First thing I did was ensure that
+            my DHCP server is the main controller, I verified that through another device connecting without my server running was unable to
+            get an IP from my network, than started my server and was able to get an IP. I than configured the TFTP server to a specific folder 
+            which will in turn be where my PXE Boot files sit. Verify the TFTP server works on my network by trying from another device and 
+            from the running server. I than created  
+        </p>
+    </body>
+</html>
