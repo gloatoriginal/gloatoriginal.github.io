@@ -1,5 +1,10 @@
 <html>
     <head><title>Devin's Projects List</title><link rel="stylesheet" href="main.css"/></head>
+    <script>
+        function close_window() {
+            close();
+        }
+    </script>
     <body>
         <h1>Below you can see a list of projects and their descriptions of how I went through with achieving them</h1>
         <h2>
@@ -29,20 +34,31 @@
             I implemented DFS to have replications scheduled periodically on my server. Amazing stuff, the next thing that server can do was
             PXE Boot! I installed PXE boot and made sure clients were receiving my DHCP range, I than downloaded the windows 10 ISO and 
             mounted the iso to see the files like a folder, I could than grab the boot.wim file, this is going to be the file that boots
-            the motherboard and loads windows into the running memory, over the network. I was able to configure this and point my pxe server
+            initially after the bios and loads windows into the running memory, over the network. I was able to configure this and point my pxe server
             to my boot.wim location, I than booted my server in UEFI and was off to the races. Once my installation finished I was presented
             with a brand new Windows 10, through this I could help companies deploy many computers at once and cut down on installation time
             by sometimes exponential effeciency.
         </p>
         <br>
         <h3>Ubuntu Server PXE Boot</h3>
+        <p><i>*High Level Description*</i></p>
+        <p>
+            I created a server using one of the Linux/GNU operating system distributions, I implemented a DHCP server that can than install 
+            more Linux OS on the network that the server sits on. With this implemented in data centers where Ubuntu Server and other Linux OS
+            are prevelant, this can save hours upon hours labor time.
+        </p>
         <p><i>*Low Level Description*</i></p>
         <p>
             I installed PXElinux, TFTP server, syslinux, apache2, and isc-dhcp on Ubuntu 20.04 Kernel 5.8. First thing I did was ensure that
             my DHCP server is the main controller, I verified that through another device connecting without my server running was unable to
             get an IP from my network, than started my server and was able to get an IP. I than configured the TFTP server to a specific folder 
             which will in turn be where my PXE Boot files sit. Verify the TFTP server works on my network by trying from another device and 
-            from the running server. I than created  
+            from the running server. Next I download and mount the Ubuntu 20.04 ISO, copy the initrd and vmlinuz from the ISO directory and into 
+            my TFTP server directory. I unmount the Ubuntu ISO and move it to the apache2 directory, I verify I can download the iso from the 
+            server's LAN IP to another pc on the network. I start my PXE Client to be greeted with an IP address from my server and the client 
+            downloads the vmlinuz along with the initrd which kick starts the pxelinux.cfg/default file as a somewhat grub boot commandline.
         </p>
+        <br>
+        <a href="javascript:close_window();">Close</a>
     </body>
 </html>
